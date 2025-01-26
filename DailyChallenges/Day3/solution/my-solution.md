@@ -6,6 +6,7 @@ e.g server1 nginx
 
 1. Launched EC2 instance with the terraform setup
 2. Installed pre-requisite softwares
+    ```
     - sudo yum update
     - sudo yum install nginx
         sudo systemctl start nginx
@@ -14,14 +15,17 @@ e.g server1 nginx
         sudo usermod -aG docker ec2-user
         sudo systemctl restart docker
         sudo sytemctl enable docker (to start service when system bootup)
+    ```
 3. Installed jenkins and grafana with dokcer image
+    ```
     - docker run -d -p 3000:3000 --name=grafana grafana/grafana-enterprise
     - docker run -d -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home --name=jenkins jenkins/jenkins:lts-jdk11
-
+    ```
 4. Now the services can be accessed on respective ports on localhost
+    ```
     - http://localhost:8080
     - http://localhost:3000
-
+    ```
 5. Created a file in folder conf.d - /etc/nginx/conf.d/default.conf
 6. Now we configure our own local machine (i.e, client) to access these services with the domains grafana.local, jenkins.local
     - Update the /etc/hosts file on local machine
@@ -46,5 +50,5 @@ e.g server1 nginx
         htpasswd -c /etc/nginx/.htpasswd <username>
         ```
     3. Add the auth related directives to nginx.conf
-    ###### Note:   Jenkins uses http auth headers, so in order to use http_auth with jenkins match the http username and password with Jenkins credentials
+### Note:   Jenkins uses http auth headers, so in order to use http_auth with jenkins match the http username and password with Jenkins credentials
 
