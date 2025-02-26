@@ -2,35 +2,41 @@
 
 
 REPORT_FILE=Report.txt
+
 check_disk_usage(){
-    echo "=== Disk Usage ===" >> $REPORT_FILE
+    echo -e " \n === Disk Usage ===" >> $REPORT_FILE
     df -h >> $REPORT_FILE
     cat $REPORT_FILE
 }
 
 
 running_services(){
-    echo "=== Running Services ===" >> $REPORT_FILE
+    echo -e " \n === Running Services ===" >> $REPORT_FILE
     systemctl list-units --state running --type service >> $REPORT_FILE
     cat $REPORT_FILE
 }
 
 memory_usage() {
-    echo "=== Memory usage ===" >> $REPORT_FILE
+    echo -e " \n === Memory usage ===" >> $REPORT_FILE
     free -h >> $REPORT_FILE
     cat $REPORT_FILE
 }
 
 cpu_usage(){
-    echo "=== CPU Usage ===" >> $REPORT_FILE
+    echo -e " \n === CPU Usage ===" >> $REPORT_FILE
     mpstat -P ALL >> $REPORT_FILE
     cat $REPORT_FILE
 }
 
 send_email_report(){
-    echo "Sending server health report through mail ..."
-    TO="recipient@example.com"
-    SUBJECT="Test Email"
+    echo -e " \n Sending server health report through mail ..."
+    TO="recipient-email@gmail.com"
+    SUBJECT="Server health report"
+    REPORT_FILE=Email_report.txt
+    check_disk_usage
+    running_services
+    memory_usage
+    cpu_usage
     BODY=`cat $REPORT_FILE`
     echo -e "Subject: $SUBJECT\n\n$BODY" | ssmtp $TO
 }
