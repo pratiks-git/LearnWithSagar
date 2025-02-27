@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do App</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .task-list { margin: 20px 0; }
+        .task { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        .task button { background-color: red; color: white; border: none; padding: 5px 10px; cursor: pointer; }
+        form { margin-bottom: 20px; }
+        input[type="text"] { padding: 10px; width: 80%; }
+        button { padding: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>To-Do App</h1>
+    <form method="post" action="/add">
+        <input type="text" name="task" placeholder="Enter your task">
+        <button type="submit">Add Task</button>
+    </form>
+    <div class="task-list">
+        {% for todo in todos %}
+        <div class="task">
+            <span>{{ todo.task }}</span>
+            <a href="/delete/{{ todo.id }}"><button>Delete</button></a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
