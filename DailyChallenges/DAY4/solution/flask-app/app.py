@@ -6,9 +6,9 @@ app.secret_key = 'your_secret_key'
 
 # Database configuration
 db_config = {
-    'host': 'localhost',
-    'user': 'pratik',
-    'password': 'admin',
+    'host': 'PRIVATE_IP_OF_MYSQL_INSTANCE',
+    'user': 'flask_user',
+    'password': 'Admin@123',
     'database': 'todo_app'
 }
 

@@ -33,11 +33,6 @@
         ALTER USER 'root'@'localhost' IDENTIFIED BY 'Admin@123';
         ```
         - Create new app user for the flask app
-        ```
-            CREATE USER 'pratik'@'localhost' IDENTIFIED BY 'Admin@123';
-            GRANT ALL PRIVILEGES ON *.* TO 'pratik'@'localhost' WITH GRANT OPTION;
-            FLUSH PRIVILEGES;
-        ```
         -
         ```
         CREATE USER 'flask_user'@'<PRIVATE_IP_OF_APP_INSTANCE>' IDENTIFIED BY 'Admin@123';
