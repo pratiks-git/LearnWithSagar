@@ -5,17 +5,17 @@ awk '{ for(i=1; i<=NF; i++) {if ($i ~ /[0-9]+\.[0-9]+\.[0-9]+\.[0-9]/){print $i,
 
 ### To print unique ip-addresses 
 ```
-awk '{ for(i=1; i<=NF; i++) {if ($i ~ /[0-9]+\.[0-9]+\.[0-9]+\.[0-9]/){a[$i]++}} } END{ for (b in a) print b} ' user_activity.log
+awk '{ for(i=1; i<=NF; i++) {if ($i ~ /[0-9]+\.[0-9]+\.[0-9]+\.[0-9]/){a[$i]++}} } END{ for (b in a){print b; count++} ; print "No of unique ip-addresses are: " count} ' user_activity.log
 ```
 
 ### To print all users
 ```
-awk '{ for(i=1; i<=NF; i++) {if ($i ~ "user"){print $i, count ;count++}} } END{ print "No of ip-addresses are: " count}' user_activity.log
+awk '{ for(i=1; i<=NF; i++) {if ($i ~ "user"){print $i, count ;count++}} } END{ print "No of users are: " count}' user_activity.log
 ```
 
 ### To print unique users
 ```
-awk '{ for(i=1; i<=NF; i++) {if ($i ~ "user"){a[$i]++}} } END{ print "No of unique users are: " count ;for(b in a) print b}' user_activity.log
+awk '{ for(i=1; i<=NF; i++) {if ($i ~ "user"){a[$i]++}} } END{ for(b in a){ print b; count++ };print "No of unique users are: " count}' user_activity.log
 ```
 
 ### Http status codes
@@ -25,7 +25,7 @@ awk '{if($NF==500) a++ ; if($NF==200) b++;  if($NF==403) c++ ;if($NF==404) d++} 
 
 ### Failed Login Attempts with timestamp
 ```
-awk '{ if ($NF==403){ for(i=1; i<=NF; i++) if ($i ~ /\[.*\]/){print $i,$NF; count++} } } END{print "Total failed attempts are: " count}' ../user_activity.log 
+awk '{ if ($NF==403){ for(i=1; i<=NF; i++) if ($i ~ /\[.*\]/){print $i,$NF; count++} } } END{print "Total failed attempts are: " count}' user_activity.log 
 ```
 
 ## Summary report
