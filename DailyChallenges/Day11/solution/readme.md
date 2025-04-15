@@ -1,6 +1,9 @@
 
 
-* Running simple docker containers
+* Running simple docker containers for testing
+
+e.g ```docker run -d --name my-nginx -p 8080:80 nginx```
+Inspecting and exploring metadata - ```docker ps```,  ``` docker logs my-nginx ```, ``` docker inspect my-nginx ```
 
 ![Running simple docker containers](<Screenshot 2025-04-08 at 11.42.50 PM.png>)
 
