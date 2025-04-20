@@ -1,0 +1,31 @@
+name: yelb-yelb-workflow
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  image-scan:
+    runs-on: ubuntu-latest
+    steps: 
+      - run: echo "from image-scan"
+  lint-docker:
+    runs-on: ubuntu-latest
+    steps: 
+      - run: echo "from lint-docker"
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "from push"
+  push-artifacts:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "ush-artifacts"
+  dev-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "dev-deploy"
+  prod-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "prod-deploy"
+  
